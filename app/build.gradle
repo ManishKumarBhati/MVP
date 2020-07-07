@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "com.bmk.daggerproject"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    kapt deps.dataBinding
+
+    implementation deps.okhttp.okio
+    implementation deps.okhttp.core
+    implementation deps.okhttp.logger
+
+    implementation deps.retrofit.core
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.rxJava
+
+    implementation deps.dagger.core
+    kapt deps.dagger.compiler
+    implementation deps.dagger.android
+    kapt deps.dagger.androidCompiler
+
+    implementation deps.groupie.core
+    implementation deps.groupie.dataBinding
+
+    implementation deps.rx.java
+    implementation deps.rx.kotlin
+    implementation deps.rx.relay
+    implementation deps.rx.android
+
+    implementation deps.androidx.appcompat
+    implementation deps.androidx.fragment
+    implementation deps.androidx.recyclerview
+    implementation deps.androidx.constraintlayout
+
+    implementation deps.kotlin
+    implementation deps.ktx.core
+    testImplementation deps.testing.junit
+    androidTestImplementation deps.androidx.test.espresso
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+}
