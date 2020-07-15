@@ -15,7 +15,7 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/07/201820.
  */
 class ListPresenter @Inject constructor(val api: ApiServiceInterface, view: ListContract) :
     BasePresenter<ListContract>(view) {

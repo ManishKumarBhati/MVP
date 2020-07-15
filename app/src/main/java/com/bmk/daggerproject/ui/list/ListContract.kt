@@ -5,7 +5,7 @@ import com.bmk.daggerproject.models.DetailsViewModel
 import com.bmk.daggerproject.models.Post
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/02/2018.
  */
 interface ListContract : BaseContract.View {
     fun showProgress(show: Boolean)

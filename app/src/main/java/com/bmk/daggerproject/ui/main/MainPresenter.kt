@@ -5,7 +5,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/07/201820.
  */
 class MainPresenter @Inject constructor(view: MainContract) : BasePresenter<MainContract>(view) {
 

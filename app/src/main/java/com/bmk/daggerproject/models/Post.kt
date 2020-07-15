@@ -1,7 +1,7 @@
 package com.bmk.daggerproject.models
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/07/201820.
  */
 data class Post(val id: Int, val userId: Int, val title: String, val body: String)
 

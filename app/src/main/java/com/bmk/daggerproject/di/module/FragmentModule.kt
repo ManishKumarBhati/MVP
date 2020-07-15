@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/07/201820.
  */
 @Module
 abstract class FragmentModule {

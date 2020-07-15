@@ -1,7 +1,7 @@
 package com.bmk.daggerproject.models
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/07/201820.
  */
 data class User(val id: Int, val name: String, val username: String)
 

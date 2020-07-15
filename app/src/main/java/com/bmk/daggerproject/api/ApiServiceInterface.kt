@@ -14,7 +14,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 /**
- * Created by ogulcan on 07/02/2018.
+ * Created by manish on 07/07/201820.
  */
 interface ApiServiceInterface {
 
