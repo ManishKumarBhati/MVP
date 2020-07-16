@@ -22,13 +22,11 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         presenter.start()
     }
 
     override fun onResume() {
         super.onResume()
-        test()
     }
 
     override fun showAboutFragment() {
@@ -39,7 +37,7 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
                     AnimType.FADE.getAnimPair().first,
                     AnimType.FADE.getAnimPair().second
                 )
-                .replace(R.id.frame, AboutFragment().newInstance(), AboutFragment.TAG)
+                .replace(R.id.frame, AboutFragment.newInstance(), AboutFragment.TAG)
                 .commit()
         } else {
             // Maybe an animation like shake hello text
@@ -53,7 +51,7 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
                 AnimType.SLIDE.getAnimPair().first,
                 AnimType.SLIDE.getAnimPair().second
             )
-            .replace(R.id.frame, ListFragment().newInstance(), ListFragment.TAG)
+            .replace(R.id.frame, ListFragment.newInstance(), ListFragment.TAG)
             .commit()
     }
 
@@ -85,14 +83,6 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
         } else {
             supportFragmentManager.popBackStack()
         }
-    }
-
-    private fun injectDependency() {
-
-    }
-
-    private fun test() {
-        //hello.setText("Hello world with kotlin extensions")
     }
 
     enum class AnimType() {

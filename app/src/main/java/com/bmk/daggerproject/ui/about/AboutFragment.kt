@@ -1,40 +1,23 @@
 package com.bmk.daggerproject.ui.about
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.bmk.daggerproject.R
-import dagger.android.support.DaggerFragment
+import com.bmk.daggerproject.util.CommonFragment
 import kotlinx.android.synthetic.main.fragment_about.*
 import javax.inject.Inject
 
 /**
  * Created by manish on 07/02/2018.
  */
-class AboutFragment : DaggerFragment(), AboutContract {
+class AboutFragment : CommonFragment(), AboutContract {
 
     @Inject
     lateinit var presenter: AboutPresenter
 
-    private lateinit var rootView: View
 
-    fun newInstance(): AboutFragment {
-        return AboutFragment()
-    }
+    override fun getLayout() = R.layout.fragment_about
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        rootView = inflater.inflate(R.layout.fragment_about, container, false)
-        return rootView
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -67,5 +50,8 @@ class AboutFragment : DaggerFragment(), AboutContract {
 
     companion object {
         val TAG: String = "AboutFragment"
+        fun newInstance(): AboutFragment {
+            return AboutFragment()
+        }
     }
 }
