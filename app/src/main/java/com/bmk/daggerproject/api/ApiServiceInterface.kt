@@ -3,12 +3,7 @@ package com.bmk.daggerproject.api
 import com.bmk.daggerproject.models.Album
 import com.bmk.daggerproject.models.Post
 import com.bmk.daggerproject.models.User
-import com.bmk.daggerproject.util.Constants
 import io.reactivex.Observable
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -45,17 +40,4 @@ interface ApiServiceInterface {
     @DELETE("albums/{id}")
     fun deleteUser(@Path("id") id: Int)
 
-    companion object Factory {
-        fun create(client: OkHttpClient): ApiServiceInterface {
-
-            val retrofit = Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(Constants.BASE_URL)
-                .client(client)
-                .build()
-
-            return retrofit.create(ApiServiceInterface::class.java)
-        }
-    }
 }
