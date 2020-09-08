@@ -59,13 +59,17 @@ class ListFragment : CommonFragment(), ListContract {
     override fun openPlayersScreen(info: TeamInfo) {
         activity?.let {
             if (it.supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
-                it.supportFragmentManager.beginTransaction()
+                val d = it.supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
                     .setCustomAnimations(
                         MainActivity.AnimType.FADE.getAnimPair().first,
                         MainActivity.AnimType.FADE.getAnimPair().second
                     )
-                    .replace(R.id.frame, AboutFragment.newInstance(), AboutFragment.TAG)
+                    .replace(
+                        R.id.frame,
+                        AboutFragment.newInstance(info.nameFull),
+                        AboutFragment.TAG
+                    )
                     .commit()
             }
         }

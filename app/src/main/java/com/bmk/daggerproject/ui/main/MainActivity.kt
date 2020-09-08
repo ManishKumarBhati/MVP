@@ -28,18 +28,18 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
     }
 
     override fun showAboutFragment() {
-        if (supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
+       /* if (supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
             supportFragmentManager.beginTransaction()
                 .addToBackStack(null)
                 .setCustomAnimations(
                     AnimType.FADE.getAnimPair().first,
                     AnimType.FADE.getAnimPair().second
                 )
-                .replace(R.id.frame, AboutFragment.newInstance(), AboutFragment.TAG)
+                .replace(R.id.frame, AboutFragment.newInstance(in), AboutFragment.TAG)
                 .commit()
         } else {
             // Maybe an animation like shake hello text
-        }
+        }*/
     }
 
     override fun showListFragment() {

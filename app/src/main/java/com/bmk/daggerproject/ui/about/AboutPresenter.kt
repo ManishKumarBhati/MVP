@@ -1,31 +1,38 @@
 package com.bmk.daggerproject.ui.about
 
+import com.bmk.daggerproject.domain.MatchRepository
 import com.bmk.daggerproject.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.Observable
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
-import java.util.concurrent.TimeUnit
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
 /**
  * Created by manish on 07/07/201820.
  */
-class AboutPresenter @Inject constructor(view: AboutContract) : BasePresenter<AboutContract>(view) {
+class AboutPresenter @Inject constructor(
+    view: AboutContract,
+    val teamName: String?,
+    val repository: MatchRepository
+) :
+    BasePresenter<AboutContract>(view) {
     override fun start() {
         loadMessage()
     }
 
     fun loadMessage() {
         // Wait for a moment
-        Observable.just(true).delay(1000, TimeUnit.MILLISECONDS)
+        repository.getTeam()
+            .filter { teamName != null }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
+            .subscribe({ response ->
                 view.showProgress(false)
-                view.loadMessageSuccess("Success")
-            }.addTo(disposable)
+                view.loadMessageSuccess(response to teamName!!)
+            }, { error ->
+                view.showProgress(false)
+                view.showErrorMessage(error.localizedMessage)
+            }).addTo(disposable)
     }
 }

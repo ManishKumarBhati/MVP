@@ -1,11 +1,20 @@
 package com.bmk.daggerproject.ui.about
 
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 
 @Module
-public abstract class AboutUsModule {
+public class AboutUsModule {
 
-    @Binds
-    abstract fun provideAboutFragment(fragment: AboutFragment): AboutContract
+    @Provides
+    fun provideAboutFragment(fragment: AboutFragment): AboutContract {
+        return fragment
+    }
+
+    @Provides
+    fun getScreenParam(fragment: AboutFragment): String? {
+        val d = fragment.arguments
+        return d?.getString(AboutFragment.ARGS_ABOUT)
+    }
+
 }
