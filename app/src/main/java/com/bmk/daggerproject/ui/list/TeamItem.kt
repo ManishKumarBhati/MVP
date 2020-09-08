@@ -6,7 +6,7 @@ import com.bmk.daggerproject.domain.TeamInfo
 import com.xwray.groupie.databinding.BindableItem
 import io.reactivex.subjects.PublishSubject
 
-class ListItem(
+class TeamItem(
     val data: TeamInfo,
     val eventSubject: PublishSubject<TeamInfo>
 ) : BindableItem<ItemLayoutBinding>() {

@@ -10,11 +10,11 @@ import javax.inject.Inject
 /**
  * Created by manish on 07/07/201820.
  */
-class ListPresenter @Inject constructor(
-    view: ListContract,
+class TeamPresenter @Inject constructor(
+    view: TeamContract,
     private val repository: MatchRepository
 ) :
-    BasePresenter<ListContract>(view) {
+    BasePresenter<TeamContract>(view) {
 
     override fun start() {
         repository.getTeam()

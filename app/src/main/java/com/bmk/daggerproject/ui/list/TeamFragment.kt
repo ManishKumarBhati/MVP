@@ -17,22 +17,22 @@ import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.fragment_list.*
+import kotlinx.android.synthetic.main.fragment_team.*
 import org.json.JSONObject
 import java.lang.reflect.Type
 import javax.inject.Inject
 
 
-class ListFragment : CommonFragment(), ListContract {
+class TeamFragment : CommonFragment(), TeamContract {
 
     @Inject
-    lateinit var presenter: ListPresenter
+    lateinit var presenter: TeamPresenter
 
     @Inject
     lateinit var gson: Gson
     internal val eventSubject: PublishSubject<TeamInfo> = PublishSubject.create()
 
-    override fun getLayout() = R.layout.fragment_list
+    override fun getLayout() = R.layout.fragment_team
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,14 +101,14 @@ class ListFragment : CommonFragment(), ListContract {
             teamListData.add(info)
         }
 
-        val item = teamListData.map { ListItem(it, eventSubject) }
+        val item = teamListData.map { TeamItem(it, eventSubject) }
         section.update(item)
     }
 
     companion object {
         val TAG: String = "ListFragment"
-        fun newInstance(): ListFragment {
-            return ListFragment()
+        fun newInstance(): TeamFragment {
+            return TeamFragment()
         }
     }
 }

@@ -7,7 +7,7 @@ import io.reactivex.Observable
 /**
  * Created by manish on 07/02/2018.
  */
-interface ListContract : BaseContract.View {
+interface TeamContract : BaseContract.View {
     fun showProgress(show: Boolean)
     fun showErrorMessage(error: String?)
     fun loadDataSuccess(data: String)

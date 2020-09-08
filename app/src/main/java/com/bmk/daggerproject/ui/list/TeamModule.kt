@@ -4,10 +4,10 @@ import dagger.Binds
 import dagger.Module
 
 @Module
-public abstract class ListModule {
+public abstract class TeamModule {
 
     @Binds
-    abstract fun provideListFra(fragment: ListFragment): ListContract
+    abstract fun provideListFra(fragment: TeamFragment): TeamContract
 
 //    @Binds
 //    abstract fun provideListPresenter(): ListPresenter

@@ -3,7 +3,7 @@ package com.bmk.daggerproject.ui.main
 import android.os.Bundle
 
 import com.bmk.daggerproject.R
-import com.bmk.daggerproject.ui.list.ListFragment
+import com.bmk.daggerproject.ui.list.TeamFragment
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -33,7 +33,7 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
                 AnimType.SLIDE.getAnimPair().first,
                 AnimType.SLIDE.getAnimPair().second
             )
-            .replace(R.id.frame, ListFragment.newInstance(), ListFragment.TAG)
+            .replace(R.id.frame, TeamFragment.newInstance(), TeamFragment.TAG)
             .commit()
     }
 
