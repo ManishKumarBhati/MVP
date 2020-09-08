@@ -40,7 +40,12 @@ dependencies {
 
     implementation deps.retrofit.core
     implementation deps.retrofit.gson
+    implementation deps.retrofit.scalar
     implementation deps.retrofit.rxJava
+
+    implementation deps.room.runtime
+    implementation deps.room.rx
+    kapt deps.room.compiler
 
     implementation deps.dagger.core
     kapt deps.dagger.compiler

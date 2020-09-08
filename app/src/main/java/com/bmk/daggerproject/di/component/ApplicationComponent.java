@@ -2,6 +2,7 @@ package com.bmk.daggerproject.di.component;
 
 import com.bmk.daggerproject.BaseApplication;
 import com.bmk.daggerproject.di.module.ActivityProvider;
+import com.bmk.daggerproject.di.module.AppModule;
 import com.bmk.daggerproject.di.module.FragmentProvider;
 import com.bmk.daggerproject.di.module.NetworkModule;
 
@@ -13,7 +14,7 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 @Singleton
-@Component(modules = {AndroidSupportInjectionModule.class, FragmentProvider.class, NetworkModule.class, ActivityProvider.class})
+@Component(modules = {AppModule.class, AndroidSupportInjectionModule.class, FragmentProvider.class, NetworkModule.class, ActivityProvider.class})
 public interface ApplicationComponent extends AndroidInjector<BaseApplication> {
 
 

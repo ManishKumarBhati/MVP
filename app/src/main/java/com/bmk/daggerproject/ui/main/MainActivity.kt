@@ -2,8 +2,6 @@ package com.bmk.daggerproject.ui.main
 
 import android.os.Bundle
 
-import android.view.Menu
-import android.view.MenuItem
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.ui.about.AboutFragment
 import com.bmk.daggerproject.ui.list.ListFragment
@@ -55,35 +53,12 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
             .commit()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.nav_item_info -> {
-                presenter.onDrawerOptionAboutClick()
-                return true
-            }
-            else -> {
-
-            }
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
     override fun onBackPressed() {
         val fragmentManager = supportFragmentManager
         val fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG)
 
-        if (fragment == null) {
-            super.onBackPressed()
-        } else {
             supportFragmentManager.popBackStack()
         }
-    }
 
     enum class AnimType() {
         SLIDE,

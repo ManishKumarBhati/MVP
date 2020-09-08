@@ -5,6 +5,6 @@ package com.bmk.daggerproject.util
  */
 class Constants {
     companion object {
-        const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+        const val BASE_URL = "https://cricket.yahoo.net/sifeeds/cricket/live/json/"
     }
 }
