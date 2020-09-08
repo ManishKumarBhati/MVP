@@ -7,12 +7,16 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.domain.TeamInfo
+import com.bmk.daggerproject.ui.about.AboutFragment
+import com.bmk.daggerproject.ui.main.MainActivity
 import com.bmk.daggerproject.util.CommonFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_list.*
 import org.json.JSONObject
 import java.lang.reflect.Type
@@ -26,6 +30,7 @@ class ListFragment : CommonFragment(), ListContract {
 
     @Inject
     lateinit var gson: Gson
+    internal val eventSubject: PublishSubject<TeamInfo> = PublishSubject.create()
 
     override fun getLayout() = R.layout.fragment_list
 
@@ -45,6 +50,25 @@ class ListFragment : CommonFragment(), ListContract {
 
     override fun showErrorMessage(error: String?) {
         Log.e("Error", error)
+    }
+
+    override fun onItemCLick(): Observable<TeamInfo> {
+        return eventSubject
+    }
+
+    override fun openPlayersScreen(info: TeamInfo) {
+        activity?.let {
+            if (it.supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
+                it.supportFragmentManager.beginTransaction()
+                    .addToBackStack(null)
+                    .setCustomAnimations(
+                        MainActivity.AnimType.FADE.getAnimPair().first,
+                        MainActivity.AnimType.FADE.getAnimPair().second
+                    )
+                    .replace(R.id.frame, AboutFragment.newInstance(), AboutFragment.TAG)
+                    .commit()
+            }
+        }
     }
 
     override fun loadDataSuccess(data: String) {
@@ -73,7 +97,7 @@ class ListFragment : CommonFragment(), ListContract {
             teamListData.add(info)
         }
 
-        val item = teamListData.map { ListItem(it) }
+        val item = teamListData.map { ListItem(it, eventSubject) }
         section.update(item)
     }
 

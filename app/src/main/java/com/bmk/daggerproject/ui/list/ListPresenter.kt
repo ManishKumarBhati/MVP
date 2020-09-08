@@ -27,6 +27,9 @@ class ListPresenter @Inject constructor(
                 view.showProgress(false)
                 view.showErrorMessage(error.localizedMessage)
             }).addTo(disposable)
-    }
 
+        view.onItemCLick()
+            .subscribe { view.openPlayersScreen(it) }
+            .addTo(disposable)
+    }
 }
