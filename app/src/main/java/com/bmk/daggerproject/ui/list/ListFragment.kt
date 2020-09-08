@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.domain.TeamInfo
-import com.bmk.daggerproject.ui.about.AboutFragment
+import com.bmk.daggerproject.ui.about.PlayerFragment
 import com.bmk.daggerproject.ui.main.MainActivity
 import com.bmk.daggerproject.util.CommonFragment
 import com.google.gson.Gson
@@ -58,7 +58,7 @@ class ListFragment : CommonFragment(), ListContract {
 
     override fun openPlayersScreen(info: TeamInfo) {
         activity?.let {
-            if (it.supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
+            if (it.supportFragmentManager.findFragmentByTag(PlayerFragment.TAG) == null) {
                 val d = it.supportFragmentManager.beginTransaction()
                     .addToBackStack(null)
                     .setCustomAnimations(
@@ -67,8 +67,8 @@ class ListFragment : CommonFragment(), ListContract {
                     )
                     .replace(
                         R.id.frame,
-                        AboutFragment.newInstance(info.nameFull),
-                        AboutFragment.TAG
+                        PlayerFragment.newInstance(info.nameFull),
+                        PlayerFragment.TAG
                     )
                     .commit()
             }

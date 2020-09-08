@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.fragment_about.*
+import kotlinx.android.synthetic.main.fragment_player.*
 import org.json.JSONObject
 import java.lang.reflect.Type
 import javax.inject.Inject
@@ -23,13 +23,13 @@ import javax.inject.Inject
 /**
  * Created by manish on 07/02/2018.
  */
-class AboutFragment : CommonFragment(), AboutContract {
+class PlayerFragment : CommonFragment(), PlayerContract {
 
     @Inject
-    lateinit var presenter: AboutPresenter
+    lateinit var presenter: PlayerPresenter
 
 
-    override fun getLayout() = R.layout.fragment_about
+    override fun getLayout() = R.layout.fragment_player
 
     @Inject
     lateinit var gson: Gson
@@ -109,10 +109,10 @@ class AboutFragment : CommonFragment(), AboutContract {
 
     companion object {
         val TAG: String = "AboutFragment"
-        val ARGS_ABOUT: String = "AboutFragment"
-        fun newInstance(teamName: String): AboutFragment {
-            return AboutFragment().apply {
-                arguments = bundleOf(ARGS_ABOUT to teamName)
+        val ARGS_PLAYER: String = "AboutFragment"
+        fun newInstance(teamName: String): PlayerFragment {
+            return PlayerFragment().apply {
+                arguments = bundleOf(ARGS_PLAYER to teamName)
             }
         }
     }

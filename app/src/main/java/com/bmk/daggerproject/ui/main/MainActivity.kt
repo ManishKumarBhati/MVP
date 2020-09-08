@@ -3,7 +3,6 @@ package com.bmk.daggerproject.ui.main
 import android.os.Bundle
 
 import com.bmk.daggerproject.R
-import com.bmk.daggerproject.ui.about.AboutFragment
 import com.bmk.daggerproject.ui.list.ListFragment
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -27,21 +26,6 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
         super.onResume()
     }
 
-    override fun showAboutFragment() {
-       /* if (supportFragmentManager.findFragmentByTag(AboutFragment.TAG) == null) {
-            supportFragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .setCustomAnimations(
-                    AnimType.FADE.getAnimPair().first,
-                    AnimType.FADE.getAnimPair().second
-                )
-                .replace(R.id.frame, AboutFragment.newInstance(in), AboutFragment.TAG)
-                .commit()
-        } else {
-            // Maybe an animation like shake hello text
-        }*/
-    }
-
     override fun showListFragment() {
         supportFragmentManager.beginTransaction()
             .disallowAddToBackStack()
@@ -54,11 +38,8 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
     }
 
     override fun onBackPressed() {
-        val fragmentManager = supportFragmentManager
-        val fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG)
-
-            supportFragmentManager.popBackStack()
-        }
+        supportFragmentManager.popBackStack()
+    }
 
     enum class AnimType() {
         SLIDE,

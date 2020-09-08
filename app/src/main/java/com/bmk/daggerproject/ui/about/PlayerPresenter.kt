@@ -11,12 +11,12 @@ import javax.inject.Inject
 /**
  * Created by manish on 07/07/201820.
  */
-class AboutPresenter @Inject constructor(
-    view: AboutContract,
+class PlayerPresenter @Inject constructor(
+    view: PlayerContract,
     val teamName: String?,
     val repository: MatchRepository
 ) :
-    BasePresenter<AboutContract>(view) {
+    BasePresenter<PlayerContract>(view) {
     override fun start() {
         loadMessage()
     }

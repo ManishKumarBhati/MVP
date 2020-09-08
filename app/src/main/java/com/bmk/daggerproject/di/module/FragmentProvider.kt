@@ -1,7 +1,7 @@
 package com.bmk.daggerproject.di.module
 
-import com.bmk.daggerproject.ui.about.AboutFragment
-import com.bmk.daggerproject.ui.about.AboutUsModule
+import com.bmk.daggerproject.ui.about.PlayerFragment
+import com.bmk.daggerproject.ui.about.PlayerModule
 import com.bmk.daggerproject.ui.list.ListFragment
 import com.bmk.daggerproject.ui.list.ListModule
 import dagger.Module
@@ -12,8 +12,8 @@ import dagger.android.ContributesAndroidInjector
  */
 @Module
 abstract class FragmentProvider {
-    @ContributesAndroidInjector(modules = [AboutUsModule::class])
-    abstract fun providesAboutFragment(): AboutFragment
+    @ContributesAndroidInjector(modules = [PlayerModule::class])
+    abstract fun providesPlayerFragment(): PlayerFragment
 
     @ContributesAndroidInjector(modules = [ListModule::class])
     abstract fun providesListFragment(): ListFragment
