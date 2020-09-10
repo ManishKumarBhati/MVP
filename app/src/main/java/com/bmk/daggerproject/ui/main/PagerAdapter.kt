@@ -17,7 +17,7 @@ class PagerAdapter(fm: FragmentManager, val data: List<TeamInfo>) :
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return data[position].nameShort
+        return data[position].nameFull
     }
 
     override fun getCount(): Int {

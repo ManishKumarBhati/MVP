@@ -3,6 +3,7 @@ package com.bmk.daggerproject.ui.main
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
 
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.domain.TeamInfo
@@ -60,6 +61,7 @@ class MainActivity : DaggerAppCompatActivity(), MainContract {
         }
 
         val adapter = PagerAdapter(supportFragmentManager, teamListData)
+        tv_header.isVisible = true
         vp_team.adapter = adapter
         tl_team.setupWithViewPager(vp_team)
 
