@@ -55,7 +55,7 @@ class PlayerFragment : CommonFragment(), PlayerContract {
 
     override fun loadMessageSuccess(data: Pair<String, String>) {
         val section = Section()
-        rv_playersList?.let {
+        rv_players_list?.let {
             it.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))

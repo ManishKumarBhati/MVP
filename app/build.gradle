@@ -59,9 +59,11 @@ dependencies {
     implementation deps.rx.kotlin
     implementation deps.rx.relay
     implementation deps.rx.android
+    implementation deps.viewPager
 
     implementation deps.androidx.appcompat
     implementation deps.androidx.fragment
+    implementation deps.androidx.material
     implementation deps.androidx.recyclerview
     implementation deps.androidx.constraintlayout
 

@@ -1,5 +1,7 @@
 package com.bmk.daggerproject.ui.about
 
+import android.graphics.Typeface
+import androidx.core.content.ContextCompat
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.databinding.ItemPlayersBinding
 import com.bmk.daggerproject.domain.PlayersInfo
@@ -12,8 +14,21 @@ class PlayersItem(val data: PlayersInfo) : BindableItem<ItemPlayersBinding>() {
 
     override fun bind(viewBinding: ItemPlayersBinding, position: Int) {
         viewBinding.apply {
-            tvName.text = "Name: ${data.nameFull}"
-            tvPos.text = "Pos:${data.position}"
+            tvName.apply {
+                text = "${data.nameFull}"
+                setTextColor(ContextCompat.getColor(root.context, R.color.black))
+                typeface = Typeface.DEFAULT_BOLD
+            }
+
+            data.Iscaptain?.let {
+                tvName.text = "${data.nameFull} (c)"
+                root.setBackgroundColor(
+                    ContextCompat.getColor(
+                        root.context,
+                        R.color.colorAccent
+                    )
+                )
+            }
         }
     }
 }

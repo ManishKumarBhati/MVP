@@ -105,8 +105,9 @@ data class PlayersInfo(
     @field:SerializedName("Bowling")
     val bowling: Bowling,
 
-    @field:SerializedName("Position")
-    val position: String,
+    @field:SerializedName("Position") val position: String,
+
+    @field:SerializedName("Iscaptain") val Iscaptain: Boolean?,
 
     @field:SerializedName("Batting")
     val batting: Batting,
