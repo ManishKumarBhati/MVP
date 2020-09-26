@@ -33,6 +33,8 @@ object Utils {
 fun ImageView.setImage(url: String) {
     Picasso.get()
         .load(url)
+        .centerCrop()
+        .resize(300, 300)
         .placeholder(R.drawable.ic_image)
         .error(R.drawable.ic_image)
         .into(this)

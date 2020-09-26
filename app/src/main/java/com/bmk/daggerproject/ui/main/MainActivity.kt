@@ -2,7 +2,7 @@ package com.bmk.daggerproject.ui.main
 
 import android.os.Bundle
 import com.bmk.daggerproject.R
-import com.bmk.daggerproject.ui.about.PlayerFragment
+import com.bmk.daggerproject.ui.list.ListFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 /**
@@ -29,14 +29,14 @@ class MainActivity : DaggerAppCompatActivity() {
       }*/
 
     fun showListFragment() {
-        if (supportFragmentManager.findFragmentByTag(PlayerFragment.TAG) == null) {
+        if (supportFragmentManager.findFragmentByTag(ListFragment.TAG) == null) {
             supportFragmentManager.beginTransaction()
                 .addToBackStack(null)
                 .setCustomAnimations(
                     AnimType.FADE.getAnimPair().first,
                     AnimType.FADE.getAnimPair().second
                 )
-                .replace(R.id.frame, PlayerFragment.newInstance(), PlayerFragment.TAG)
+                .replace(R.id.frame, ListFragment.newInstance(), ListFragment.TAG)
                 .commit()
         }
     }

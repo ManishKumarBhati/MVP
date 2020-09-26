@@ -1,4 +1,4 @@
-package com.bmk.daggerproject.ui.about
+package com.bmk.daggerproject.ui.list
 
 import com.bmk.daggerproject.domain.MatchRepository
 import com.bmk.daggerproject.ui.base.BasePresenter
@@ -11,11 +11,11 @@ import javax.inject.Inject
 /**
  * Created by manish on 07/07/201820.
  */
-class PlayerPresenter @Inject constructor(
-    view: PlayerContract,
+class ListPresenter @Inject constructor(
+    view: ListContract,
     val repository: MatchRepository
 ) :
-    BasePresenter<PlayerContract>(view) {
+    BasePresenter<ListContract>(view) {
     override fun start() {
         loadMessage()
     }

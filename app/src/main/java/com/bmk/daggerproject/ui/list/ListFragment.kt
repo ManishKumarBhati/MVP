@@ -1,4 +1,4 @@
-package com.bmk.daggerproject.ui.about
+package com.bmk.daggerproject.ui.list
 
 import android.os.Bundle
 import android.util.Log
@@ -18,10 +18,10 @@ import javax.inject.Inject
 /**
  * Created by manish on 07/02/2018.
  */
-class PlayerFragment : CommonFragment(), PlayerContract {
+class ListFragment : CommonFragment(), ListContract {
 
     @Inject
-    lateinit var presenter: PlayerPresenter
+    lateinit var presenter: ListPresenter
 
 
     override fun getLayout() = R.layout.fragment_player
@@ -51,12 +51,10 @@ class PlayerFragment : CommonFragment(), PlayerContract {
                 adapter = GroupAdapter<ViewHolder>().apply { add(section) }
             }
         }
-        val d = data.results.map {
-            PlayersItem(it)
+        val item = data.results.map {
+            ListItem(it)
         }
-        section.update(d)
-        Log.d("bmk", data.toString())
-
+        section.update(item)
     }
 
     override fun showErrorMessage(error: String?) {
@@ -68,9 +66,9 @@ class PlayerFragment : CommonFragment(), PlayerContract {
     }
 
     companion object {
-        val TAG: String = "PlayerFragment"
-        fun newInstance(): PlayerFragment {
-            return PlayerFragment()
+        val TAG: String = "ListFragment"
+        fun newInstance(): ListFragment {
+            return ListFragment()
         }
     }
 }
