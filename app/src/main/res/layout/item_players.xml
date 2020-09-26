@@ -11,7 +11,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cv_dp"
@@ -75,19 +75,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:src="@drawable/test"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cv_dp" />
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/iv_like"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginLeft="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_small"
+                android:background="@drawable/button_like"
+                android:checked="false"
                 android:src="@drawable/ic_unlike"
+                android:text=""
+                android:textOff=""
+                android:textOn=""
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_upload_img" />
 
@@ -147,24 +151,26 @@
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_small"
                 android:ellipsize="end"
-                android:maxLines="3"
+                android:maxLines="2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_likes"
-                tools:text="askljh asjkhaw JFH WHE;HWAHJNFJEW LKEWJFB LWELJEWHLKFJBskbakJ" />
+                app:layout_constraintBottom_toTopOf="@id/tv_period"
+                tools:text="askljh asjkhaw JFH WHE;HWAHJNkahdshahiufwhiufehfesahjksfahksdf hufsddjkahjkadkhjawFJEW LKEWJFB LWELJEWHLKFJBskbakJ" />
 
             <TextView
                 android:id="@+id/tv_period"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_small"
                 android:layout_marginRight="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_small"
+                android:gravity="end"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_message"
                 tools:text="2 days ago" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

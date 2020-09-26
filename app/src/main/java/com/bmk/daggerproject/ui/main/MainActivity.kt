@@ -1,14 +1,18 @@
 package com.bmk.daggerproject.ui.main
 
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.ui.list.ListFragment
 import dagger.android.support.DaggerAppCompatActivity
+
 
 /**
  * Created by manish on 07/07/201820.
  */
 class MainActivity : DaggerAppCompatActivity() {
+    var doubleBackToExitPressedOnce = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,13 +24,6 @@ class MainActivity : DaggerAppCompatActivity() {
         showListFragment()
     }
 
-    /*  override fun showProgress(show: Boolean) {
-          progressBar.visibility = if (show) View.VISIBLE else View.GONE
-      }
-
-      override fun showErrorMessage(error: String) {
-          Log.e("Error", error)
-      }*/
 
     fun showListFragment() {
         if (supportFragmentManager.findFragmentByTag(ListFragment.TAG) == null) {
@@ -36,13 +33,20 @@ class MainActivity : DaggerAppCompatActivity() {
                     AnimType.FADE.getAnimPair().first,
                     AnimType.FADE.getAnimPair().second
                 )
-                .replace(R.id.frame, ListFragment.newInstance(), ListFragment.TAG)
+                .add(R.id.frame, ListFragment.newInstance(), ListFragment.TAG)
                 .commit()
         }
     }
 
     override fun onBackPressed() {
-        supportFragmentManager.popBackStack()
+        if (doubleBackToExitPressedOnce) {
+            finish()
+            return
+        }
+
+        doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
+        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
     enum class AnimType() {

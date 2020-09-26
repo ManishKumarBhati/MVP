@@ -151,7 +151,7 @@ data class Video(
 data class ActionCounts(
 
     @JvmField @SerializedName("like")
-    val like: Int? = null,
+    var like: Int = 0,
 
     @JvmField @SerializedName("web_click")
     val webClick: Int? = null,

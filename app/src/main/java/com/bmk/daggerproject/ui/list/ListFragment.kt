@@ -45,7 +45,7 @@ class ListFragment : CommonFragment(), ListContract {
 
     override fun loadMessageSuccess(data: ResponseData) {
         val section = Section()
-        rv_players_list?.let {
+        rv_list?.let {
             it.apply {
                 layoutManager = GridLayoutManager(requireContext(), 2)
                 adapter = GroupAdapter<ViewHolder>().apply { add(section) }
