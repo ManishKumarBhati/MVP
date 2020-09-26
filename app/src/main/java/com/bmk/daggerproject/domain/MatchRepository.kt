@@ -1,8 +1,6 @@
 package com.bmk.daggerproject.domain
-
-import io.reactivex.Single
+import io.reactivex.Observable
 
 interface MatchRepository {
-    fun getMatchData(): Single<String>
-    fun getTeam(): Single<String>
+    fun getMatchData(): Observable<ResponseData>
 }

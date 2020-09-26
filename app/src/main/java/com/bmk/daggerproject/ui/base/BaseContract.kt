@@ -10,6 +10,9 @@ class BaseContract {
         fun stop()
         fun attach(view: T)
     }
+
     interface View {
+        fun showProgress(show: Boolean)
+        fun showErrorMessage(error: String?)
     }
 }

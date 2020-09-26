@@ -1,35 +1,23 @@
 package com.bmk.daggerproject.data
 
-import com.bmk.daggerproject.api.ApiServiceInterface
-import com.bmk.daggerproject.data.db.MatchData
-import com.bmk.daggerproject.data.db.MatchDataBase
+import android.content.Context
 import com.bmk.daggerproject.domain.MatchRepository
+import com.bmk.daggerproject.domain.ResponseData
+import com.bmk.daggerproject.util.Utils
 import com.google.gson.Gson
-import io.reactivex.Single
+import com.google.gson.reflect.TypeToken
+import io.reactivex.Observable
+import java.lang.reflect.Type
 import javax.inject.Inject
 
 class MatchRepositoryImpl @Inject constructor(
-    val api: ApiServiceInterface,
-    val db: MatchDataBase,
-    val gson: Gson
-) :
-    MatchRepository {
-    override fun getMatchData(): Single<String> {
-        return api.getPostList().map {
-            addMatchData(it)
-            "success"
+    val gson: Gson,
+    val context: Context
+) : MatchRepository {
+    override fun getMatchData(): Observable<ResponseData> {
+        return Observable.fromCallable {
+            val dataType: Type = object : TypeToken<ResponseData>() {}.type
+            (gson.fromJson(Utils.getAssetJsonData(context), dataType) as ResponseData)
         }
-    }
-
-    override fun getTeam(): Single<String> {
-        return getMatchLocalData()
-    }
-
-    private fun addMatchData(data: String) {
-        db.matchDOA().insertAll(MatchData(data))
-    }
-
-    private fun getMatchLocalData(): Single<String> {
-        return db.matchDOA().getAlData()
     }
 }

@@ -8,6 +8,8 @@ import androidx.annotation.LayoutRes
 import dagger.android.support.DaggerFragment
 
 abstract class CommonFragment : DaggerFragment() {
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -18,4 +20,12 @@ abstract class CommonFragment : DaggerFragment() {
 
     @LayoutRes
     abstract fun getLayout(): Int
+
+    /*protected fun toggleProgress(isVisible: Boolean) {
+        navigator.showProgress(isVisible)
+    }
+    fun showError(error:String?){
+        navigator.showErrorMessage(error ?:"Opps Some thing went wrong!")
+    }*/
+
 }

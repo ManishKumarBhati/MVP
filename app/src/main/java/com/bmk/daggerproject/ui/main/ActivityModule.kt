@@ -6,9 +6,11 @@ import dagger.Module
 
 @Module
 public abstract class ActivityModule() {
+/*
     @Binds
-    abstract fun provideAppCompatActivity(activity: MainActivity): AppCompatActivity
+    abstract fun provideActivityNavigator(activity: MainActivity): ActivityNavigator
+*/
 
     @Binds
-    abstract fun provideMainActivity(activity: MainActivity): MainContract
+    abstract fun provideAppCompatActivity(activity: MainActivity): AppCompatActivity
 }

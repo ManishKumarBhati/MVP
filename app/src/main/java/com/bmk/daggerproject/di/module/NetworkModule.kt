@@ -1,23 +1,12 @@
 package com.bmk.daggerproject.di.module
 
-import android.content.Context
-import android.util.Log
-import androidx.room.Room
-import com.bmk.daggerproject.api.ApiServiceInterface
 import com.bmk.daggerproject.data.MatchRepositoryImpl
-import com.bmk.daggerproject.data.db.MatchDataBase
 import com.bmk.daggerproject.domain.MatchRepository
-import com.bmk.daggerproject.util.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.internal.bind.DateTypeAdapter
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.*
 import javax.inject.Singleton
 
@@ -31,43 +20,6 @@ class NetworkModule {
             .registerTypeAdapter(EncodedString::class.java, EncodedStringTypeAdapter().nullSafe())
             .registerTypeAdapter(Date::class.java, DateTypeAdapter().nullSafe())
             .create()
-    }
-
-    @Provides
-    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor(HttpLoggingInterceptor
-            .Logger { Log.d("OkHttp", it) }
-        ).setLevel(HttpLoggingInterceptor.Level.BODY)
-    }
-
-    @Provides
-    fun provideOkHttpClient(logger: HttpLoggingInterceptor): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(logger)
-            .build()
-    }
-
-    @Provides
-    fun provideRetrofit(client: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .baseUrl(Constants.BASE_URL)
-            .client(client)
-            .build()
-    }
-
-    @Provides
-    fun provideApiService(retrofit: Retrofit): ApiServiceInterface {
-        return retrofit.create(ApiServiceInterface::class.java)
-    }
-
-    @Provides
-    @Singleton
-    fun provideAppDatabase(context: Context): MatchDataBase {
-        return Room.databaseBuilder(context, MatchDataBase::class.java, "test_app_db")
-            .fallbackToDestructiveMigration()
-            .build()
     }
 
     @Provides
