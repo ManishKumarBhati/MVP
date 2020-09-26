@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bmk.daggerproject.R
 import com.bmk.daggerproject.domain.ResponseData
 import com.bmk.daggerproject.util.CommonFragment
 import com.google.gson.Gson
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_player.*
 import javax.inject.Inject
 
@@ -40,15 +44,17 @@ class PlayerFragment : CommonFragment(), PlayerContract {
     }
 
     override fun loadMessageSuccess(data: ResponseData) {
-        /*val section = Section()
+        val section = Section()
         rv_players_list?.let {
             it.apply {
-                layoutManager = LinearLayoutManager(requireContext())
-                addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+                layoutManager = GridLayoutManager(requireContext(), 2)
                 adapter = GroupAdapter<ViewHolder>().apply { add(section) }
             }
         }
-       section.update()*/
+        val d = data.results.map {
+            PlayersItem(it)
+        }
+        section.update(d)
         Log.d("bmk", data.toString())
 
     }

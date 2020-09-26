@@ -72,6 +72,7 @@ ext.deps = [
         ],
         'timber'     : "com.jakewharton.timber:timber:${versions.timber}",
         'viewPager'     : "androidx.viewpager2:viewpager2:1.0.0",
+        'picaso'     : "com.squareup.picasso:picasso:2.71828",
         'groupie'    : [
                 'core'       : "com.xwray:groupie:${versions.groupie}",
                 'dataBinding': "com.xwray:groupie-databinding:${versions.groupie}"
